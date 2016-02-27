@@ -1,2 +1,3 @@
 # operation-fun-times
-Cora + Lucy operation fun times
+Cora + Lucy 
+girls just wanna have fun
