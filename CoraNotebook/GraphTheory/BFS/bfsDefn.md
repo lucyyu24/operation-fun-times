@@ -1,3 +1,4 @@
+```python
 BFS (graph G, start):
 	[all nodes initially unexplored]
 	mark s as explored
@@ -8,7 +9,7 @@ BFS (graph G, start):
 			if w unexplored:
 				mark w as explored
 				add w to Q
-
+```
 Runtime
 O(ns + ms) for main while loop
 - where ns = # of nodes reachable from start s
