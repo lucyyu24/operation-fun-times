@@ -1,4 +1,5 @@
-```python
+Pseudocode
+```javascript
 BFS (graph G, start):
 	[all nodes initially unexplored]
 	mark s as explored
