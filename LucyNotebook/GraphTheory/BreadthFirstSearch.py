@@ -8,11 +8,13 @@ graph = {'A': ['B', 'C', 'E'],
 
 def BFS(graph, root):
 	visited, queue = [root],[root]
+	print (root)
+
 	while queue:
 		v = queue.pop()
-		print(v)
 		for i in graph[v]:
 			if i not in visited:
+				print(i)
 				visited.append(i)
 				queue.insert(0,i)
 

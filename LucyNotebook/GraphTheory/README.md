@@ -3,9 +3,9 @@
 starts at the root and explores as far as possible along each branch before backtracking
 
 
-##### Pseudocode
-
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/6/61/Graph.traversal.example.svg "Graph")
+
+##### Pseudocode
 
 non-recursive solution:
 will visit the nodes in order of A, E, F, B, D, C, G
@@ -35,6 +35,26 @@ procedure DFS(G,v):
 
 starts at the root and explores the neighbour nodes first, before moving to the next level neighbours
 
+##### Psuedocode
 
+```java
+void BFS(Node root) {
+  Queue queue = new Queue();
+  root.visited = true;
+  visit(root);
+  queue.enqueue(root);
+
+  while (!queue.isEmpty()) {
+    Node r = queue.dequeue();
+    foreach (Node n in r.adjacent) {
+      if (n.visited == false) {
+        visit(n);
+        n.visited = true;
+        queue.enqueue(n);
+      }
+    }
+  }
+}
+```
 
 
