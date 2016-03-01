@@ -1,19 +1,20 @@
-# * Undirected graph
+# Undirected graph
 # Remember if stmt on line 15
+# Line 15 can also be 'if dist[dest-1] == -1', using dist as visited list
 # https://www.hackerrank.com/challenges/bfsshortreach
-# Doesn't pass test case #5 - runtime error; any idea?
+# * Doesn't pass test case #5 - runtime error; any ideas?
 
 def bfs(graph, start, nodes):
-	visited, queue = [], [start]
+	visited, queue = [start], [start]
 	dist = [-1 for x in range(nodes)]
-	dist[start-1] = 0 # [0,1,2,3]
+	dist[start-1] = 0
 	while queue:
 		src = queue.pop(0)
 		# print (src)
-		visited.append(src)
 		for dest in graph[src]:
-			if dist[src-1] + 6 < dist[dest-1] or dist[dest-1] == -1:
+			if dest not in visited:
 				dist[dest-1] = dist[src-1] + 6
+				visited.append(dest)
 				queue.append(dest)
 	dist.remove(0)
 	print(*dist, sep=' ', end='\n')
