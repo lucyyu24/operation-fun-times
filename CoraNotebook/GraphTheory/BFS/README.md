@@ -1,4 +1,9 @@
 Pseudocode
+
+Important Assumption
+
+Length of every path is constant. Otherwise, take a look at Dijkstra to compute the shortest path.
+
 ```javascript
 BFS (graph G, start):
 	[all nodes initially unexplored]
