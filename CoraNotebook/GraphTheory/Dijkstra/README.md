@@ -1,10 +1,44 @@
 # Dijkstra Shortest-Path Algorithm
 
+A greedy algorithm to find the shortest paths between nodes in a graph. It allows for edges to have varying lengths.
+
+![dijkstra graph](http://www.reviewmylife.co.uk/data/2008/0715/dijkstras-graph.gif)
+
 ####Important Assumption
 
-Each edge has a non-negative length.
+Each edge has a non-negative length.*
 
-###Questions
+####Pseudocode
+
+```javascript
+def Dijkstra(graph, src):
+	Q = []							# vertex set Q
+	for each vertex v in graph:
+		dist[v] = infinity			# unknown dist from src
+		prev[v] = undefined			# pointers to parent node for most optimal path
+		add v to Q
+	
+	dist[src] = 0					# the only known dist, src to src
+	
+	while Q not empty:
+		u = vertex in Q with min dist[u] 	# greedy property
+		remove u from Q 
+
+			for each neightbour v of u:
+				temp = dist[u] + edgeLength(u,v)
+				if temp < dist[v]:
+					dist[v] = temp
+					prev[v] = u
+```
+
+###### Note
+- Dijkstra is a greedy algorithm for the shortest path, and that is demonstrated by `u = vertex in Q with min dist[u]`. It finds the node with the shortest edge from the current node. 
+
+- Think of `prev` as an array that stores pointers to the next node in the shortest path. Thus, iterating through prev will give you the nodes for which to travel to obtain the shortest path.
+
+- `if temp < dist[v]` is a critical difference between BFS and Dijkstra. A path to a certain node may have already been found, but this new path may have a shorter distance (temp) to that node due to the fact that all edges may vary in length.
+
+###*Questions
 
 ####When could an edge be non-negative?
 
@@ -32,20 +66,7 @@ Dijkstra is a **greedy** algorithm based on the nodes that are one edge away fro
 
 It will first find that travelling from s -> t (score of -2) is less costly than travelling first from s -> v (score of 1). Thus it will now assume t has been visited and will be added to the list of conquered nodes, which assumes that the shortest path to this node has already been calculated.
 
-####Pseudocode
-
-```javascript
-X = [start] 	# visited nodes
-A[start] = 0 	# only stores shortest distances
-
-while X != V:
-	among all edges (v,w) with v in X and w not in X, pick one that minimizes A[v] + l(v,w):
-		add w* to X
-		set A[w*] = A[v*] + l(v*,w*)
-```
-
-Note `(v*, w*)` denotes the minimum edge
-Note Dijkstra's greedy criterion for picking the minimum `A[v] + l(v,w)`
+####Runtime
 
 Running Time
 n = number of nodes in a graph
