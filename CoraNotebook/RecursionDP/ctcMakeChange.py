@@ -1,5 +1,7 @@
 '''
 Given an infinite number of quarters, dimes, nickels, and pennies, find the number of ways to represetn n cents.
+
+Solution uses recursion: several recursive calls -> inefficient -> use DP instead
 '''
 
 def cashMoney (n, coinIndex, coins):
